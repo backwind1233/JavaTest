@@ -1,3 +1,5 @@
+package javase;
+
 import com.java.se.Week;
 import org.junit.Test;
 import static org.junit.Assert.*;

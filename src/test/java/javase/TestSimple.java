@@ -1,3 +1,5 @@
+package javase;
+
 /**
  * Created by zhihaoguo on 15/4/9.
  */

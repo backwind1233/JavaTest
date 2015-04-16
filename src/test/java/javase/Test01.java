@@ -1,3 +1,5 @@
+package javase;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

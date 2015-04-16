@@ -1,3 +1,5 @@
+package javase;
+
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -8,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by zhihaoguo on 15/4/8.
  */
-public class Testfile {
+public class TestFile {
     @Test
     public void testFile() throws FileNotFoundException {
         FileOutputStream excelFile;
