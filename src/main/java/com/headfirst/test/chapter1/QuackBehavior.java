@@ -1,0 +1,9 @@
+package com.headfirst.test.chapter1;
+
+/**
+ * Created by zhihaoguo on 15/3/13.
+ */
+public interface QuackBehavior {
+    public void quack();
+
+}
