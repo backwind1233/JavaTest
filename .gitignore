@@ -20,4 +20,4 @@ maven-ant-tasks.jar
 test-output
 classes
 /target
-/target
+/targetgs
