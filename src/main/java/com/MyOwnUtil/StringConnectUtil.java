@@ -10,8 +10,18 @@ import java.util.Map;
  * Created by zhihaoguo on 15/4/17.
  */
 public class StringConnectUtil {
-    public static String StringConnect(String[][] ruleSet,Map<String, String> stringMaps) {
 
+
+    private static final String CONNECT = "1";
+    private static final String DISCONNECT = "0";
+
+
+    /**
+     * @param ruleSet:规则集
+     * @param stringMaps:对应的map
+     * @return
+     */
+    public static String StringConnect(String[][] ruleSet, Map<String, String> stringMaps) {
 //        String[][] ruleSet = {
 //                {"a", "&", "&", "0"},
 //                {"b", "(", ")", "0"},
@@ -35,82 +45,40 @@ public class StringConnectUtil {
 //        stringMaps.put("efef", " ui k");
 //        stringMaps.put("thisis", " ui k");
 
-
+        if (ruleSet == null)
+            return "";
 
         StringBuffer sb = new StringBuffer();
         State st = new State();
-        if (ruleSet == null)
-            return "ruleSet is null" ;
+
         for (String[] strings : ruleSet) {
             String value = stringMaps.get(strings[0]);
-            if ("0".equals(strings[3])) {
+            if (DISCONNECT.equals(strings[3])) {
                 if (StringUtils.isNotEmpty(st.getSufString()) && st.getState() == 1) {
-                    sb.append(st.getSufString()) ;
+                    sb.append(st.getSufString());
                     st.setState(0);
                 }
                 if (StringUtils.isNotBlank(value)) {
                     sb.append(strings[1] + value + strings[2]);
                 }
-            } else if ("1".equals(strings[3])) {
-                if (st.getState() == 0) {
-                    st.setState(1);
-                    if (StringUtils.isNotBlank(value)) {
+            } else if (CONNECT.equals(strings[3])) {
+                if (StringUtils.isNotBlank(value)) {
+                    if (st.getState() == 0) {
+                        st.setState(1);
                         sb.append(strings[1] + value);
-                    }
-                } else if (st.getState() == 1) {
-                    if (StringUtils.isNotBlank(value)) {
+                        st.setSufString(strings[2]);
+                    } else if (st.getState() == 1) {
                         sb.append(value);
                         st.setSufString(strings[2]);
                     }
-
                 }
 
             }
 
         }
-        System.out.println(sb);
-
-
-        return null;
+        if (st.getState() == 1)
+            sb.append(st.getSufString());
+        return sb.toString();
     }
-
-//    static class State {
-//        String preString;
-//        String sufString;
-//        boolean condition;
-//        int state;
-//
-//        public String getPreString() {
-//            return preString;
-//        }
-//
-//        public void setPreString(String preString) {
-//            this.preString = preString;
-//        }
-//
-//        public String getSufString() {
-//            return sufString;
-//        }
-//
-//        public void setSufString(String sufString) {
-//            this.sufString = sufString;
-//        }
-//
-//        public boolean isCondition() {
-//            return condition;
-//        }
-//
-//        public void setCondition(boolean condition) {
-//            this.condition = condition;
-//        }
-//
-//        public int getState() {
-//            return state;
-//        }
-//
-//        public void setState(int state) {
-//            this.state = state;
-//        }
-//    }
 
 }
