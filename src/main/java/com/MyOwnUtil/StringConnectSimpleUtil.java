@@ -1,4 +1,4 @@
-package MyOwnUtil;
+package com.MyOwnUtil;
 
 import org.apache.commons.lang3.StringUtils;
 
