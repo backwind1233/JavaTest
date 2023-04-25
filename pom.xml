@@ -11,6 +11,7 @@
     <modules>
         <module>..</module>
         <module>../CodeComplete</module>
+        
     </modules>
 
     <reporting>
